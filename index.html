@@ -1,15 +1,214 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="refresh" content="0; url=https://script.google.com/macros/s/AKfycbwUwCw5CoWgiHHAEmcvSU4eOK6t0gSfAnjCyRlf_oyPDZsktuHh8dfOZVDw-VXouKoP/exec">
-  <title>Redirecionando...</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="refresh" content="2; url=https://script.google.com/macros/s/AKfycbwUwCw5CoWgiHHAEmcvSU4eOK6t0gSfAnjCyRlf_oyPDZsktuHh8dfOZVDw-VXouKoP/exec">
+  <title>CS COSMETICS • Bem-vindo</title>
+
+  <!-- Open Graph (opcional, mas dá um ar profissional quando compartilha link) -->
+  <meta property="og:title" content="Sistema CS COSMETICS" />
+  <meta property="og:description" content="Redirecionando com segurança para o sistema." />
+  <meta name="theme-color" content="#0d6efd" />
+
+  <style>
+    :root{
+      --bg1:#0b1220;
+      --bg2:#0a2a66;
+      --card: rgba(255,255,255,.08);
+      --stroke: rgba(255,255,255,.14);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.68);
+      --accent:#4da3ff;
+      --accent2:#8b5cf6;
+      --shadow: 0 18px 60px rgba(0,0,0,.45);
+      --radius: 18px;
+    }
+
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      min-height:100vh;
+      display:grid;
+      place-items:center;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(900px 500px at 12% 15%, rgba(77,163,255,.35), transparent 60%),
+        radial-gradient(800px 500px at 90% 20%, rgba(139,92,246,.25), transparent 55%),
+        linear-gradient(180deg, var(--bg1), var(--bg2));
+      overflow:hidden;
+    }
+
+    /* grid suave de fundo */
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(circle at 50% 25%, rgba(0,0,0,.9), transparent 65%);
+      opacity:.35;
+      pointer-events:none;
+    }
+
+    .wrap{
+      width:min(560px, 92vw);
+      padding: 24px;
+      position:relative;
+      z-index:1;
+    }
+
+    .card{
+      border: 1px solid var(--stroke);
+      background: var(--card);
+      box-shadow: var(--shadow);
+      border-radius: var(--radius);
+      padding: 28px;
+      backdrop-filter: blur(10px);
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      margin-bottom: 14px;
+    }
+
+    .logo{
+      width:44px;
+      height:44px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 10px 30px rgba(77,163,255,.20);
+      display:grid;
+      place-items:center;
+      font-weight: 800;
+      letter-spacing:.5px;
+      color:#061225;
+      user-select:none;
+    }
+
+    h1{
+      font-size: 1.35rem;
+      line-height:1.2;
+      margin:0;
+      font-weight: 800;
+    }
+
+    .sub{
+      margin: 10px 0 18px;
+      color: var(--muted);
+      font-size: .98rem;
+    }
+
+    .row{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      flex-wrap:wrap;
+      margin-top: 18px;
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--stroke);
+      background: rgba(255,255,255,.05);
+      color: var(--muted);
+      font-size: .92rem;
+    }
+
+    .spinner{
+      width:16px;
+      height:16px;
+      border-radius:50%;
+      border: 2px solid rgba(255,255,255,.25);
+      border-top-color: rgba(255,255,255,.85);
+      animation: spin 0.9s linear infinite;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    a{
+      color: var(--text);
+      text-decoration: none;
+      border-bottom: 1px dashed rgba(255,255,255,.55);
+    }
+    a:hover{ opacity:.9; }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding: 11px 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.18);
+      background: linear-gradient(135deg, rgba(77,163,255,.22), rgba(139,92,246,.16));
+      box-shadow: 0 18px 40px rgba(0,0,0,.25);
+      font-weight: 700;
+      transition: transform .12s ease, opacity .12s ease;
+    }
+    .btn:hover{ transform: translateY(-1px); }
+    .btn:active{ transform: translateY(0px); opacity:.92; }
+
+    .footer{
+      margin-top: 16px;
+      font-size: .85rem;
+      color: rgba(255,255,255,.55);
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    /* acessibilidade: respeita redução de movimento */
+    @media (prefers-reduced-motion: reduce){
+      .spinner{ animation:none; }
+    }
+  </style>
 </head>
+
 <body>
-  <p>Redirecionando... Se não for automaticamente, 
-    <a href="https://script.google.com/macros/s/AKfycbwUwCw5CoWgiHHAEmcvSU4eOK6t0gSfAnjCyRlf_oyPDZsktuHh8dfOZVDw-VXouKoP/exec">
-      clique aqui
-    </a>.
-  </p>
+  <main class="wrap" role="main" aria-live="polite">
+    <section class="card">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">CS</div>
+        <div>
+          <h1>Bem-vindo ao Sistema da CS COSMETICS</h1>
+          <div class="sub">Estamos preparando o acesso. Você será redirecionado em instantes.</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="pill">
+          <span class="spinner" aria-hidden="true"></span>
+          <span>Redirecionando com segurança…</span>
+        </div>
+
+        <a class="btn" href="https://script.google.com/macros/s/AKfycbwUwCw5CoWgiHHAEmcvSU4eOK6t0gSfAnjCyRlf_oyPDZsktuHh8dfOZVDw-VXouKoP/exec">
+          Acessar agora
+        </a>
+      </div>
+
+      <div class="footer">
+        <span>Se o redirecionamento não acontecer, clique em “Acessar agora”.</span>
+        <span>© CS COSMETICS</span>
+      </div>
+    </section>
+  </main>
+
+  <!-- (Opcional) Redirecionamento via JS também, caso o meta refresh seja bloqueado -->
+  <script>
+    const url = "https://script.google.com/macros/s/AKfycbwUwCw5CoWgiHHAEmcvSU4eOK6t0gSfAnjCyRlf_oyPDZsktuHh8dfOZVDw-VXouKoP/exec";
+    setTimeout(() => { window.location.replace(url); }, 2000);
+  </script>
 </body>
 </html>
+>
